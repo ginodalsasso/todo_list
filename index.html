@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f3340c3342.js" crossorigin="anonymous"></script>
+
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <div id="todo">
+        <button id="btn">Add a task</button>
+        <div id="todoCards">
+            <div class="todoCard">
+                <textarea class="task" maxlength="200" cols="20" rows="15">New task </textarea>
+                <span class="delBtn"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+            <div class="counter"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const addTask = document.getElementById('btn')
+
+        const parent = document.getElementById('todoCards') //parent de todoCard
+        const addTodo = document.querySelector('.todoCard')
+        const trash = document.querySelector('.delBtn')
+        
+        addTask.addEventListener('click', function (){
+                //nouvelle constante newcard qui aura pour valeur non pas l'élément box mais une copie, un clone de celui-ci grâce à la méthode cloneNode()
+                const newCard = addTodo.cloneNode(true) //true si les enfants du noeud doivent aussi être clonés
+                // méthode qui place un élément du DOM à la fin du contenu de l'élément visé.
+                parent.appendChild(newCard)
+                
+                trash.addEventListener('click', function (){
+                newCard.remove()
+                })
+        })
+
+
+        // newCard.querySelector('.delBtn').remove()
+
+    </script>
+</body>
+</html>

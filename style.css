@@ -1,0 +1,24 @@
+#btn{
+    width: 600px;
+    margin-bottom: 10px;
+}
+
+#todoCards{
+    display: flex;
+    width: fit-content;
+}
+
+.todoCard{
+    margin: 0 10px;
+    position: relative;
+}
+
+span {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+span i{
+    cursor: pointer;
+}
