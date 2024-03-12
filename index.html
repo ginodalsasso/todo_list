@@ -28,23 +28,27 @@
         const addTask = document.getElementById('btn')
 
         const parent = document.getElementById('todoCards') //parent de todoCard
-        const addTodo = document.querySelector('.todoCard')
-        const trash = document.querySelector('.delBtn')
+        // const trash = document.querySelector('.delBtn')
         
         addTask.addEventListener('click', function (){
-                //nouvelle constante newcard qui aura pour valeur non pas l'élément box mais une copie, un clone de celui-ci grâce à la méthode cloneNode()
-                const newCard = addTodo.cloneNode(true) //true si les enfants du noeud doivent aussi être clonés
-                // méthode qui place un élément du DOM à la fin du contenu de l'élément visé.
-                parent.appendChild(newCard)
-                
-                trash.addEventListener('click', function (){
-                newCard.remove()
-                })
+            const addTodo = document.querySelector('.todoCard')
+
+            //nouvelle constante newcard qui aura pour valeur non pas l'élément box mais une copie, un clone de celui-ci grâce à la méthode cloneNode()
+            const newCard = addTodo.cloneNode(true) //true si les enfants du noeud doivent aussi être clonés
+            // Sélection de l'élément ".delBtn" à l'intérieur de la nouvelle carte
+            const trash = newCard.querySelector('.delBtn');
+            // Ajout de la nouvelle carte clonée à la fin du parent "todoCards"
+            parent.appendChild(newCard)
+            //supprimer la carte lorsqu'on clique sur le bouton de suppression
+            trash.addEventListener('click', function (){
+            newCard.remove()
+            })
         })
 
+        //vSélection de la div class= counter
+        const counter = document.querySelector('.counter')
 
-        // newCard.querySelector('.delBtn').remove()
-
+        
     </script>
 </body>
 </html>
