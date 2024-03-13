@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/f3340c3342.js" crossorigin="anonymous"></script>
 
     <title>Todo List</title>
-</head>
+</head> 
 <body>
     <h1>Todo List</h1>
 
@@ -18,37 +18,48 @@
                 <textarea class="task" maxlength="200" cols="20" rows="15">New task </textarea>
                 <span class="delBtn"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
-            <div class="counter"></div>
         </div>
-
+        <div class="counter"></div>  <!-- div crée pour le compteur  -->
     </div>
 
     <script>
-
         const addTask = document.getElementById('btn')
+        const addTodo = document.querySelector('.todoCard')
 
         const parent = document.getElementById('todoCards') //parent de todoCard
-        // const trash = document.querySelector('.delBtn')
+        const trash = document.querySelector('.delBtn')
+
+        //fonction me permettant de supprimer la dernière card
+        trash.addEventListener('click', function (){
+                addTodo.remove()
+                const cardsNumber = document.querySelectorAll('.todoCard').length // "longueur" de la div todoCard (nb de card)
+                counter.innerHTML = cardsNumber // Affichage de ma classe counter et du compteur
+
+            })
+
         
+        var counter = document.querySelector('.counter') 
+
         addTask.addEventListener('click', function (){
-            const addTodo = document.querySelector('.todoCard')
 
             //nouvelle constante newcard qui aura pour valeur non pas l'élément box mais une copie, un clone de celui-ci grâce à la méthode cloneNode()
             const newCard = addTodo.cloneNode(true) //true si les enfants du noeud doivent aussi être clonés
+            const cardsNumber = document.querySelectorAll('.todoCard').length // "longueur" de la div todoCard (nb de card)
+            counter.innerHTML = cardsNumber // Affichage de ma classe counter et du compteur (incrémentation)
+
             // Sélection de l'élément ".delBtn" à l'intérieur de la nouvelle carte
-            const trash = newCard.querySelector('.delBtn');
+            const trash = newCard.querySelector('.delBtn')
             // Ajout de la nouvelle carte clonée à la fin du parent "todoCards"
             parent.appendChild(newCard)
-            //supprimer la carte lorsqu'on clique sur le bouton de suppression
+
+            //supprimer la new Card lorsqu'on clique sur le bouton de suppression
             trash.addEventListener('click', function (){
-            newCard.remove()
+                newCard.remove()
+                const cardsNumber = document.querySelectorAll('.todoCard').length // "longueur" de la div todoCard (nb de card)
+                 //décrémente à chaque suppression de Card
+                counter.innerHTML = cardsNumber // Affichage de ma classe counter et du compteur
             })
         })
-
-        //vSélection de la div class= counter
-        const counter = document.querySelector('.counter')
-
-        
     </script>
 </body>
 </html>

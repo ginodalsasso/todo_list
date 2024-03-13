@@ -22,3 +22,12 @@ span {
 span i{
     cursor: pointer;
 }
+
+.counter{
+    background-color: black;
+    color: white;
+    width: 600px;
+    margin-top: 10px;
+    text-align: center;
+
+}
